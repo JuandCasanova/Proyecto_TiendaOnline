@@ -9,7 +9,7 @@ export const getUserProfile = async () => {
   }
 
   try {
-    const response = await axios.get(`${API_URL}/users/profile`, {
+    const response = await axios.get(`${API_URL}/clientes/perfil`, {
       headers: {
         'Authorization': `Bearer ${user.token}`
       }

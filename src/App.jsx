@@ -8,6 +8,7 @@ import AuthModal from './components/AuthModal';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Container, Navbar, Button } from 'react-bootstrap';
 import { logout } from './services/auth.service';
+import EmailConfirm from './components/EmailConfirm'; 
 
 function App() {
   const [showAuth, setShowAuth] = useState(false);
@@ -55,6 +56,7 @@ function App() {
         <Route path="/" element={
           user ? <Navigate to="/dashboard" /> : <Home handleShowLogin={() => setShowAuth(true)} />
         } />
+        <Route path="/confirmacion" element={<EmailConfirm />} />
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <Dashboard />

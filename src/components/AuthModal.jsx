@@ -42,7 +42,7 @@ const AuthModal = ({ show, handleClose, onLoginSuccess }) => {
       setError('');
       setSuccess('');
       const result = await register(values.name, values.email, values.password);
-      setSuccess(result.message || 'Registro exitoso! Por favor inicia sesión');
+      setSuccess(result.message || 'Registro exitoso! Por favor revisa tu correo electronico para verificar y activar tu cuenta');
       resetForm();
       setTimeout(() => {
         setKey('login');

@@ -5,9 +5,9 @@ const API_URL = 'http://localhost:3000/api';
 const register = async (name, email, password) => {
   try {
     const response = await axios.post(`${API_URL}/auth/register`, {
-      name,
-      email,
-      password
+      name: name,
+      email: email,
+      password: password,
     });
     return response.data;
   } catch (error) {
@@ -40,5 +40,16 @@ const logout = () => {
   localStorage.removeItem('user');
   delete axios.defaults.headers.common['Authorization'];
 };
-
-export { register, login, logout };
+/**
+ * @param {string} token
+ * @returns {Promise<Object>}
+ */
+const verifyEmail=async(token)=>{
+  try {
+    const response=await axios.get(`${API_URL}/auth/verify-email?token=${token}`,);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data||{message:'Error en el servidor'};
+  }
+};
+export{register,login,logout,verifyEmail};
